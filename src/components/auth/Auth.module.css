@@ -9,7 +9,6 @@
 	margin: 0 auto;
 	width: 100%;
 	max-width: 476px;
-	background-color: var(--white);
 }
 
 .auth img {
@@ -70,6 +69,7 @@
 		margin: 0;
 		padding: 4rem;
 		border-radius: 12px;
+		background-color: var(--white);
 	}
 
 	.auth img {
