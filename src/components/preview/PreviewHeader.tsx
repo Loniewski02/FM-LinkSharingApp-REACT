@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 
-import { auth } from '../../../firebase';
-
 import Button from '../UI/Button';
 import Nav from '../layout/Nav';
 import Preview from '../UI/Preview';
@@ -13,7 +11,7 @@ import copied from '../../assets/images/icon-link-copied-to-clipboard.svg';
 import styles from './PreviewHeader.module.css';
 
 const PreviewHeader: React.FC = () => {
-	const uid = auth.currentUser?.uid;
+	const uid = sessionStorage.getItem('uid');
 	const navigate = useNavigate();
 	const [isLargeScreen, setIsLargeScreen] = useState(false);
 	const [isCopied, setIsCopied] = useState(false);
