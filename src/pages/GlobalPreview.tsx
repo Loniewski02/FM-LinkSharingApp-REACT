@@ -22,10 +22,8 @@ const GlobalPreview: React.FC = () => {
 	const navigate = useNavigate();
 
 	const navigateHandler = () => {
-		navigate('/auth');
+		navigate('/auth?mode=register');
 	};
-
-	console.log(name);
 
 	return (
 		<section className={styles.preview}>
