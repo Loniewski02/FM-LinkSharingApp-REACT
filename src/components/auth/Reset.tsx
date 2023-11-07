@@ -38,7 +38,7 @@ const Reset: React.FC = () => {
 
 		if (!emailIsValid) {
 			emailBlurHandler();
-			successStatus();
+			setIsLoading(false);
 			return;
 		} else {
 			handleForgotPassword();
