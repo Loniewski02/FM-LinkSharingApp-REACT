@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Public+Sans:wght@400;700&display=swap');
+:root {
+	--purple: #633cff;
+	--purple-hover: #beadff;
+	--light-purple: #efebff;
+	--dark-grey: #333333;
+	--grey: #737373;
+	--border-color: #d9d9d9;
+	--light-grey: #fafafa;
+	--white: #ffffff;
+	--red: #ff3939;
+}
+
+*,
+*::after,
+*::before {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	background-color: var(--light-grey);
+	font-family: 'Instrument Sans', sans-serif;
+	font-size: 1.6rem;
+	min-height: 100vh;
+}
+
+main {
+	position: relative;
+	/* overflow-x: hidden; */
+}
+
+button,
+input {
+	font-family: inherit;
+}

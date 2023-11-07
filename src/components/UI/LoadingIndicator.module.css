@@ -1,0 +1,35 @@
+.indicator {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 6px;
+}
+
+.indicator div {
+	position: relative;
+	width: 100px;
+	height: 100%;
+	background-color: var(--purple);
+	border-bottom: 3px solid var(--white);
+	animation: loading 1s infinite;
+}
+
+@keyframes loading {
+	0% {
+		left: 0;
+	}
+	30% {
+		width: 20%;
+	}
+	65% {
+		width: 25%;
+	}
+	90% {
+		width: 15%;
+	}
+
+	100% {
+		left: 100%;
+	}
+}

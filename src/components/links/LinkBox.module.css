@@ -1,0 +1,133 @@
+.box {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 2rem;
+	border-radius: 12px;
+	background-color: var(--light-grey);
+}
+
+.box__heading {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.box__heading h3 {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 1.6rem;
+	font-weight: 700;
+	line-height: 150%;
+	color: var(--grey);
+}
+
+.box__heading h3 button {
+	display: flex;
+	align-items: center;
+	padding: 2px;
+	cursor: grab;
+}
+
+.box__heading button {
+	border: 1px solid transparent;
+	background-color: transparent;
+	font-size: 1.6rem;
+	line-height: 150%;
+	color: var(--grey);
+	cursor: pointer;
+}
+
+.box__actions {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.box__actions label {
+	color: var(--Dark-Grey);
+	font-family: Instrument Sans;
+	font-size: 12px;
+	line-height: 150%;
+}
+
+.box__actions button {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1.2rem 1.6rem;
+	color: var(--grey);
+	font-size: 1.6rem;
+	border-radius: 8px;
+	border: 1px solid var(--border-color);
+	background-color: var(--white);
+	cursor: pointer;
+	line-height: 150%;
+}
+
+.box__actions button.invalidP {
+	border: 1px solid var(--red);
+	box-shadow: 0px 0px 32px 0px rgba(255, 57, 57, 0.25);
+}
+
+.box__actions button > div {
+	display: flex;
+	gap: 12px;
+	align-items: center;
+}
+
+.list {
+	position: absolute;
+	top: 80px;
+	left: 0;
+	right: 0;
+	background-color: var(--white);
+	border: 1px solid var(--border-color);
+	border-radius: 12px;
+	height: 180px;
+	overflow-x: hidden;
+	z-index: 10;
+}
+
+.list button {
+	position: relative;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 12px;
+	width: 100%;
+	border: 1px solid transparent;
+	border-radius: 0;
+	transition: color 0.3s;
+}
+
+.list button > img {
+	width: 16px;
+	height: 16px;
+}
+
+.list button:hover {
+	color: var(--purple);
+}
+
+.list button:hover img {
+	filter: brightness(0) saturate(100%) invert(23%) sepia(70%) saturate(4170%) hue-rotate(246deg) brightness(102%)
+		contrast(110%);
+}
+
+.list button::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	height: 1px;
+	right: 1.6rem;
+	left: 1.6rem;
+	background-color: var(--border-color);
+}
+
+.list button:last-child:after {
+	display: none;
+}
