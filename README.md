@@ -37,8 +37,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [https://link-sharing-app-react.vercel.app/](https://link-sharing-app-react.vercel.app/)
+- Solution URL: [https://www.frontendmentor.io/solutions/linksharing-app-L4EntWoEIC](https://www.frontendmentor.io/solutions/linksharing-app-L4EntWoEIC)
+- Live Site URL: [https://fm-link-sharing-app-react.vercel.app/](https://fm-link-sharing-app-react.vercel.app/)
 
 ## My process
 
