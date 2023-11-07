@@ -1,12 +1,16 @@
 import { Dispatch } from 'redux';
 
+import { uiActions } from './ui-slice';
 import { profileActions } from './profile-slice';
 
 export const fetchUserData = () => {
 	return async (dispatch: Dispatch) => {
 		const fetchData = async () => {
 			const uid = sessionStorage.getItem('uid');
-			const response = await fetch(`https://link-sharing-app-a3954-default-rtdb.firebaseio.com/users/${uid}.json`);
+			const token = sessionStorage.getItem('token');
+			const response = await fetch(
+				`https://link-sharing-app-a3954-default-rtdb.firebaseio.com/users/${uid}.json?auth=${token}`
+			);
 			const data = await response.json();
 
 			return data;
@@ -14,6 +18,7 @@ export const fetchUserData = () => {
 
 		try {
 			const data = await fetchData();
+			dispatch(uiActions.loading());
 			if (data) {
 				dispatch(
 					profileActions.replaceData({
@@ -24,6 +29,9 @@ export const fetchUserData = () => {
 					})
 				);
 			}
-		} catch (error) {}
+			dispatch(uiActions.notLoading());
+		} catch (error) {
+			console.error(error);
+		}
 	};
 };

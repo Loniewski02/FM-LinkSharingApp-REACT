@@ -2,7 +2,6 @@ import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { ActionFunction } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { auth } from '../../../firebase';
 import { linksActions } from '../../store/links-slice';
 import useSuccess from '../../hooks/use-success';
 
@@ -127,19 +126,23 @@ const LinksSection: React.FC = () => {
 export default LinksSection;
 
 export const action: ActionFunction = async () => {
-	const uid = auth.currentUser?.uid;
+	const uid = sessionStorage.getItem('uid');
+	const token = sessionStorage.getItem('token');
 	const arr = localStorage.getItem('links');
 
 	if (arr !== null) {
 		const data = JSON.parse(arr);
 
-		const response = await fetch(`https://link-sharing-app-a3954-default-rtdb.firebaseio.com/users/${uid}.json`, {
-			method: 'PATCH',
-			headers: {
-				'Content-Type': 'application/json',
-			},
-			body: JSON.stringify({ links: data }),
-		});
+		const response = await fetch(
+			`https://link-sharing-app-a3954-default-rtdb.firebaseio.com/users/${uid}.json?auth=${token}`,
+			{
+				method: 'PATCH',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ links: data }),
+			}
+		);
 
 		localStorage.removeItem('links');
 		return response;

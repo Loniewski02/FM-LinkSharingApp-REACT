@@ -98,7 +98,7 @@ const LinkBox: React.FC<Props> = (props) => {
 				onChange={selectUrlHandler}
 				isError={!props.isUrlValid}
 				errorMessage='Enter a valid url'
-				defaultValue={props.url}
+				value={props.url}
 			/>
 		</div>
 	);

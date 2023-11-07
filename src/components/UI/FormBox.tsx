@@ -11,7 +11,6 @@ type Props = {
 	errorMessage?: string;
 	img?: string;
 	value?: string;
-	defaultValue?: string;
 	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 	onBlur?: () => void;
 };
@@ -33,7 +32,6 @@ const FormBox: React.FC<Props> = (props) => {
 					onChange={props.onChange}
 					onBlur={props.onBlur}
 					value={props.value}
-					defaultValue={props.defaultValue}
 				/>
 				<p>{props.errorMessage ? props.errorMessage : "Can't be blank"}</p>
 			</div>

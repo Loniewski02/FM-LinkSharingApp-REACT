@@ -7,10 +7,15 @@ export const fetchLinksData = () => {
 	return async (dispatch: Dispatch) => {
 		const fetchData = async () => {
 			const uid = sessionStorage.getItem('uid');
-			const response = await fetch(`https://link-sharing-app-a3954-default-rtdb.firebaseio.com/users/${uid}.json`);
+			const token = sessionStorage.getItem('token');
+
+			const response = await fetch(
+				`https://link-sharing-app-a3954-default-rtdb.firebaseio.com/users/${uid}.json?auth=${token}`
+			);
+
 			const data = await response.json();
 
-			return await data;
+			return data;
 		};
 
 		try {
@@ -20,6 +25,8 @@ export const fetchLinksData = () => {
 				dispatch(linksActions.replaceData(data.links));
 			}
 			dispatch(uiActions.notLoading());
-		} catch (error) {}
+		} catch (error) {
+			console.error(error);
+		}
 	};
 };

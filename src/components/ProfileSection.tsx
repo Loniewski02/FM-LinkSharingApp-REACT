@@ -1,7 +1,6 @@
 import { ActionFunction } from 'react-router-dom';
 
 import { useAppDispatch, useAppSelector } from '../hooks/hooks';
-import { auth } from '../../firebase';
 import { profileActions } from '../store/profile-slice';
 import useSuccess from '../hooks/use-success';
 
@@ -121,7 +120,8 @@ const ProfileSection: React.FC = () => {
 export default ProfileSection;
 
 export const action: ActionFunction = async ({ request }) => {
-	const uid = auth.currentUser?.uid;
+	const uid = sessionStorage.getItem('uid');
+	const token = sessionStorage.getItem('token');
 	const data = await request.formData();
 
 	const userData = {
@@ -131,13 +131,16 @@ export const action: ActionFunction = async ({ request }) => {
 		profilePic: localStorage.getItem('image'),
 	};
 
-	const response = await fetch(`https://link-sharing-app-a3954-default-rtdb.firebaseio.com/users/${uid}.json`, {
-		method: 'PATCH',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(userData),
-	});
+	const response = await fetch(
+		`https://link-sharing-app-a3954-default-rtdb.firebaseio.com/users/${uid}.json?auth=${token}`,
+		{
+			method: 'PATCH',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(userData),
+		}
+	);
 
 	return response;
 };
