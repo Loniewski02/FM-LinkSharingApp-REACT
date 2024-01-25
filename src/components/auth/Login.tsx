@@ -73,25 +73,21 @@ const Login: React.FC = () => {
 	};
 
 	const handleLoginSuccess = (user: any) => {
-		if (user.emailVerified) {
-			setIsError(false);
-			user
-				.getIdToken()
-				.then((token: string) => {
-					sessionStorage.setItem('token', token);
-					const expiration = new Date();
-					expiration.setHours(expiration.getHours() + 1);
-					sessionStorage.setItem('expiration', expiration.toISOString());
-				})
-				.then(() => {
-					setIsLoading(false);
-					navigate('/links');
-				});
-		} else {
-			setIsError(true);
-			setError('Email address unverified. Confirm registration.');
-			setIsLoading(false);
-		}
+		setIsError(false);
+		user
+			.getIdToken()
+			.then((token: string) => {
+				sessionStorage.setItem('token', token);
+				const expiration = new Date();
+				expiration.setHours(expiration.getHours() + 1);
+				sessionStorage.setItem('expiration', expiration.toISOString());
+			})
+			.then(() => {
+				setIsLoading(false);
+				navigate('/links');
+			});
+
+		setIsLoading(false);
 	};
 
 	const login = async () => {
